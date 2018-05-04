@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>React-Naive-Book-Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="../lib/browser.min.js"></script>
+</head>
+
+<body>
+    <div class='wrapper'>
+        <button class='like-btn'>
+            <span class='like-text'>点赞</span>
+            <span>👍</span>
+        </button>
+    </div>
+    <script>
+        const button = document.querySelector('.like-btn')
+        const buttonText = button.querySelector('.like-text')
+
+        let isLiked = false
+
+        button.addEventListener('click', () => {
+            isLiked = !isLiked
+            if (isLiked) {
+                buttonText.innerHTML = "取消"
+            } else {
+                buttonText.innerHTML = "点赞"
+            }
+        }, false)
+    </script>
+</body>
+
+</html>
