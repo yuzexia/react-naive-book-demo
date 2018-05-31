@@ -14,7 +14,7 @@ class LikeButton extends Component {
     handleClickOnLikeButton(e) {
         console.log(e.target.innerHTML)
         console.log('this.state.isLiked', this.state.isLiked)
-        this.props.likedText = "props不可变";
+        // this.props.likedText = "props不可变"; //props不可变
         this.setState({
             isLiked: !this.state.isLiked
         })
