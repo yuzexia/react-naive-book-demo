@@ -2,11 +2,23 @@ import React, { Component } from 'react';
 
 class CommentInput extends Component {
     constructor() {
+        console.log('constructor 阶段')
         super();
         this.state = {
             username: '',
             content: ''
         }
+    }
+    componentWillMount() {
+        console.log('组件commentInput: componentWillMount阶段')
+    }
+    // 构造DOM元素插入页面
+    componentDidMount() {
+        console.log('组件commentInput: componentDidMount阶段')
+    }
+    // 从页面中删除元素
+    componentWillUnmount() {
+        console.log('组件commentInput: componentWillUnmount阶段')
     }
     handleUsernameChange(event) {
         this.setState({
@@ -27,6 +39,7 @@ class CommentInput extends Component {
         this.setState({ content: '' });
     }
     render () {
+        console.log('render阶段')
         return (
             <div className='comment-input'>
                 <div className='comment-field'>

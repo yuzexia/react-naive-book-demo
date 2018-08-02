@@ -102,3 +102,22 @@ body {
   margin: 0;
   /*text-indent: 2em;*/
 }
+
+/* slogan */
+.slogan-box{
+  text-align:center;
+  margin: 15px 0;
+  padding:20px;
+  border:1px solid #f1f1f1;
+  line-height: 30px;
+}
+.clock-button,
+.slogan-button{
+  padding: 5px 10px;
+  border: none;
+  border-radius: 3px;
+  background-color: #00a3cf;
+  color: #fff;
+  outline: none;
+  cursor: pointer;
+}

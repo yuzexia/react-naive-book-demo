@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import CommentInput from './CommentInput';
 import CommentList from './CommentList';
-
+import ShowSloganHandle from './ShowSloganHandle';
+import HandleDate from './HandleDate';
 class CommentApp extends Component {
     constructor() {
         super();
@@ -21,6 +22,8 @@ class CommentApp extends Component {
     render() {
         return (
             <div className="wrapper">
+                <HandleDate />
+                <ShowSloganHandle />
                 <CommentInput 
                     onSubmit={this.handleSubmitComment.bind(this)}/>
                 <CommentList comments={this.state.comments}/>
