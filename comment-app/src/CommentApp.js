@@ -23,7 +23,12 @@ class CommentApp extends Component {
         return (
             <div className="wrapper">
                 <HandleDate />
-                <ShowSloganHandle />
+                <ShowSloganHandle>
+                    <h1>hello react</h1>
+                    <span>react.js</span>
+                    订阅
+                    <input type="text"/>
+                </ShowSloganHandle>
                 <CommentInput 
                     onSubmit={this.handleSubmitComment.bind(this)}/>
                 <CommentList comments={this.state.comments}/>

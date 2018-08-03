@@ -8,6 +8,9 @@ class ShowSloganHandle extends Component {
             isDisplay: true
         }
     }
+    componentDidMount() {
+        console.log(this.props.children);
+    }
     handleClick() {
         console.log('handleClick');
         console.log(this.button.clientHeight); // 使用ref获取原生DOM的属性值
