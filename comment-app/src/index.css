@@ -115,6 +115,16 @@ body {
   color:inherit;
 }
 
+.comment .comment-delete{
+  position: absolute;
+  display:none;
+  right: 5px;
+  font-style: normal;
+  cursor: pointer;
+}
+.comment:hover .comment-delete{
+  display:block;
+}
 /* slogan */
 .slogan-box{
   text-align:center;
