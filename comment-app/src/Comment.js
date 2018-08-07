@@ -24,7 +24,16 @@ class Comment extends Component {
             this.props.onDeleteComment(this.props.index)
         }
     }
-
+    // 格式化文本内容
+    _getProcessedContent(content) {
+        return content
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;")       
+        .replace(/`([\S\s]+?)`/g, '<code>$1</code>')
+    }
     // 格式化时间戳
     _updateTimeString() {
         const comment = this.props.comment
@@ -45,12 +54,13 @@ class Comment extends Component {
     }
     
     render() {
+        let comment = this.props.comment
         return (
             <div className='comment'>
                 <div className='comment-user'>
-                    <span>{this.props.comment.username}</span>：
+                    <span>{comment.username}</span>：
                 </div>
-                <p>{this.props.comment.content}</p>
+                <p dangerouslySetInnerHTML={{__html: this._getProcessedContent(comment.content)}}></p>
                 <span className="comment-createdtime">
                     {this.state.timeString}
                 </span>

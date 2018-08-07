@@ -125,6 +125,13 @@ body {
 .comment:hover .comment-delete{
   display:block;
 }
+.comment code{
+  border:1px solid #ccc;
+  background:#f9f9f9;
+  padding: 2px;
+  margin: 0 2px;
+  border-radius: 5px;
+}
 /* slogan */
 .slogan-box{
   text-align:center;
