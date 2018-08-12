@@ -34,9 +34,14 @@ function stateChanger(state, action) {
 }
 
 function createStore(state, stateChanger) {
+	const listeners = [];
+	const subscribe = (listener) => listeners.push(listener)
 	const getState = () => state;
-	const dispatch = (action) => stateChanger(state, action);
-	return { getState, dispatch }
+	const dispatch = (action) => {
+		stateChanger(state, action);
+		listeners.forEach((listener) => listener())
+	}
+	return { getState, dispatch, subscribe }
 } 
 
 function renderApp (appState) {
@@ -58,9 +63,11 @@ function renderContent(content) {
 
 const store = createStore(state, stateChanger)
 
+store.subscribe(() => renderApp(store.getState()))
+
 renderApp(store.getState()); // 首次渲染页面
 
 store.dispatch({ type: 'UPDATE_TITLE_TEXT', text: '《react.js小书》' }); // 更改title.text
-store.dispatch({ type: 'UPDATE_TITLE_COLOR', color: 'green' }); //更改title.color
+store.dispatch({ type: 'UPDATE_TITLE_COLOR', color: 'yellow' }); //更改title.color
 
-renderApp(store.getState()); // 再次渲染页面
+// ...后面不管如何 store.dispatch，都不需要重新调用 renderApp
