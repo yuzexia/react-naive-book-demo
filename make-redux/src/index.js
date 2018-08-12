@@ -8,7 +8,7 @@ ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();
 */
 
-const appState = {
+const state = {
 	title: {
 		text: 'react.js小书',
 		color: 'red'
@@ -19,18 +19,25 @@ const appState = {
 	}
 }
 
-function dispatch(action) {
+
+function stateChanger(state, action) {
 	switch (action.type) {
 		case 'UPDATE_TITLE_TEXT':
-			appState.title.text = action.text;
+			state.title.text = action.text;
 			break;
 		case 'UPDATE_TITLE_COLOR':
-			appState.title.color = action.color;
+			state.title.color = action.color;
 			break;
 		default:
 			break;	
 	}
 }
+
+function createStore(state, stateChanger) {
+	const getState = () => state;
+	const dispatch = (action) => stateChanger(state, action);
+	return { getState, dispatch }
+} 
 
 function renderApp (appState) {
   renderTitle(appState.title)
@@ -49,9 +56,11 @@ function renderContent(content) {
 	contentDOM.style.color = content.color;
 }
 
-renderApp(appState); // 首次渲染页面
+const store = createStore(state, stateChanger)
 
-dispatch({ type: 'UPDATE_TITLE_TEXT', text: '《react.js小书》' }); // 更改title.text
-dispatch({ type: 'UPDATE_TITLE_COLOR', color: 'green' }); //更改title.color
+renderApp(store.getState()); // 首次渲染页面
 
-renderApp(appState); // 再次渲染页面
+store.dispatch({ type: 'UPDATE_TITLE_TEXT', text: '《react.js小书》' }); // 更改title.text
+store.dispatch({ type: 'UPDATE_TITLE_COLOR', color: 'green' }); //更改title.color
+
+renderApp(store.getState()); // 再次渲染页面
